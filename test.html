@@ -2,11 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Button Color Change</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+    </style>
 </head>
 <body>
-    test
+    <button id="colorButton">Change Color!</button>
+
+    <script>
+        // JavaScript code to handle button click event
+        document.getElementById('colorButton').addEventListener('click', function() {
+            // Generate a random color
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+            // Set the body background color to the random color
+            document.body.style.backgroundColor = randomColor;
+        });
+    </script>
+    <br>
+    <ol>
+     <a href="index.html">GO BACK</a>
+    </ol>
+    <br>
+
+    <iframe src="https://www.walla.co.il/" title="walla" width="600" height="500">
+    </iframe>
     
-</body>
-</html>
+    

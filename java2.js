@@ -1,5 +1,5 @@
 
-for( let j = 1; j <= 101; j++ )
+for( let j = 1; j <= 100; j++ )
 {   
     str = '';       
     

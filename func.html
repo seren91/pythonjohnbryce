@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="print_Name()" >test</button>
+    <br>
+    <button onclick="print_Name1()" >test20name</button>
+    <br>
+    <button onclick="getDate()">Date</button>
+    <br>
+    <button onclick="print_Name3()">name</button>
+    
+    
+    <script>
+let n=0
+function print_Name()
+        {console.log('name');}
+function print_Name1()
+        { while(n<20) {
+            console.log('name');
+            n++;
+        }
+        
+    } 
+
+    
+
+function print_Name3()
+        { for ( let ma=10; ma>0; ma--) {
+            console.log('ma');
+            
+        }
+        
+    } 
+
+    function getDate()
+        {  const date =new Date();
+            const monthFormatter = new Intl.DateTimeFormat('en-US', {month: 'long'});
+            const month = monthFormatter.format(date);
+            console.log(month);}
+    </script>
+</body>
+</html>

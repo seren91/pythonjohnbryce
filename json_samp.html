@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    First name:<input id="fName">
+    Age:<input id="age">
+
+    <button onclick="addAstudent()">Add</button>
+    <script>
+        let students=[]
+
+        function addAstudent(){
+            students.push({"firstName":fName.value,"age":age.value})
+            console.log(students);
+        }
+    </script>
+</body>
+</html>

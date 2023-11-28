@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input id="result">
+    <button onclick="addDigit()">9</button>
+    <button onclick="addDigit()">8</button>
+    <button onclick="addDigit()">7</button>
+    <button onclick="rememberOperator()">*</button>
+    <button onclick="rememberOperator()">+</button>
+    <button onclick="rememberOperator()">/</button>
+    <button onclick="clearResult()">C</button>
+    <script>
+let oper=""
+let clearFlag=false
+let num1=0
+result.value="0"
+
+        function doCalc(){
+        //console.log(`num1 ${num1}`);
+        //console.log(`num1 ${num1}`);
+        //console.log(`num1 ${num1}`);
+            if (oper== "+") {
+                result.value = +num1 + +result.value
+            }
+            if (oper== "*") {
+                result.value = +num1 * +result.value
+            }
+
+            if (oper== "/") {
+                result.value = +num1 / +result.value
+            }
+            clearFlag=true
+        }
+
+        function rememberOperator(){
+            oper= event.target.innerText
+            clearFlag=true
+            num1=result.value
+            console.log(num1);
+            console.log(oper);
+        }
+
+    function addDigit() {
+        if(result.value == "0" || clearFlag){
+        result.value=""
+        clearFlag=false
+        }
+
+    //console.log(event.target);
+        result.value += event.target.innerText
+}
+    function clearResult() {
+        result.value ="0"
+    }
+
+    </script>
+</body>
+</html>

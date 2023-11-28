@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <br>
+        <div onclick="play()">
+        <button>-</button>   
+        <button>-</button>
+        <button>-</button><br>
+        <button>-</button>
+        <button>-</button>
+        <button>-</button><br>
+        <button>-</button>
+        <button>-</button>
+        <button>-</button><br>
+        </div> 
+<script>
+    let turn="X"
+    let counter = 0
+        function play() {
+            
+            if (event.target.innerText == "-"){
+            event.target.innerText = turn
+            turn=(turn== "X" ? "0" : "X")
+            msg.innerHTML =`<h1>Turn of player ${turn}`
+                counter++
+            if (counter == 9) {
+                msg.innerHTML =`<h1> Tie`
+            }  
+            checkWin() 
+    }
+    }
+        function checkWin(){
+
+        }
+
+</script>
+
+</body>
+</html>

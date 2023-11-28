@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        let sum = 0
+        let ar = [4, 6, 7, 8, 8]
+        let bigger=ar[0]
+        // print all items in array
+        // for (let ind = 0; ind < ar.length; ind++) {
+        //     console.log(ar[ind]);
+        // }
+        // print all items in array * 2
+        // for (let ind = 0; ind < ar.length; ind++) {
+        //     console.log(ar[ind] * 2);
+        // }
+
+        // sum all items in array
+        // for (let ind = 0; ind < ar.length; ind++) {
+        //     sum +=ar[ind] 
+        // }
+        // console.log(ar);
+        // console.log(sum);
+
+            for (let ind = 0; ind < ar.length; ind++) {
+                if(bigger < ar[ind] )   
+                {
+                    bigger = ar[ind]
+                }             
+            }
+            console.log(bigger);
+    </script>
+</body>
+
+</html>

@@ -8,85 +8,112 @@
 <body>
     <input id="res">
     <br>
-    <input id="res1">
+    
     <br>
     <br>
     <br>
     <button onclck="memory">M</button>
-    <button onclick="oper('nth')">nth</button>
-    <button onclick="oper('exp')">exp</button>
-    <button onclick="oper('/')">/</button>
+    <button onclick="operDo('**')">nth</button>
+    <button onclick="operDo('Math.sqrt()')">exp</button>
+    <button onclick="operDo('/')">/</button>
     <br>
     <button onclick="addDigit(7)">7</button>
     <button onclick="addDigit(8)">8</button>
     <button onclick="addDigit(9)" >9</button>
-    <button onclick="oper('*')">*</button>
+    <button onclick="operDo('*')">*</button>
     <br>
     <button onclick="addDigit(4)">4</button>
     <button onclick="addDigit(5)">5</button>
     <button onclick="addDigit(6)">6</button>
-    <button onclick="oper('-')">-</button>
+    <button onclick="operDo('-')">-</button>
     <br>
     <button onclick="addDigit(1)">1</button>
     <button onclick="addDigit(2)">2</button>
     <button onclick="addDigit(3)">3</button>
-    <button onclick="oper('+')">+</button>
+    <button onclick="operDo('+')">+</button>
    
     <br>
     <button onclick="clearAll()">C</button>
     <button onclick="addDigit(0)">0</button>
     <button onclick="point()">.</button>
-    <button onclick="oper('sum')">=</button>
+    <button onclick="Sum('sum')">=</button>
 
     
         
     <script>
         let clearFlag=false;
         let num1=0 ;
-        let num2=0 ;
-        let lastOper="";
+        let num2=0;
+        let oper="";
         res.value=0;
         let sum1=0;
-        function addDigit(digit) {
-            if (clearFlag) {
-                res.value='' ;
-                clearFlag=false;
-            }
-            
-            res.value +=digit;
-        }
         
+        function addDigit(digit) {
+        if(res.value == "0" || clearFlag){
+        res.value=""
+        clearFlag=false
+        }
+        res.value += event.target.innerText;
+    }
         function clearAll (){
             num1='';
             num2='';
             clearFlag=false;
             res.value=0;
         }
-        function oper(op){
-            clearFlag=true;
-            res.value=num1;
-            lastOper=op;
-            if (lastOper='+' || '-' || '*') {
-                clearFlag=false;
-                res.value=0;
+       // function operDo(oper){
+          //  clearFlag=true;
+           // res.value=num1;
+          //  lastOper=oper;
+          //  if (lastOper='+' || '-' || '*' ||'**'||'Math.sqrt()') {
+          //      clearFlag=false;
+          //      res.value=0;
+         //       res.value=num2;
+         //       res.value +=digit;
                 
-                res.value=num2;
-                res.value +=digit;
-            }
+          //  } 
             
             //res.value = +n1.value+ +n2.value
              
-        }
+        //}
         
-        function oper(sum){
-            if (lastOper='sum'){
-                res1.value=+num1.value+ +num2.value ;
-                document.getElementById("res1").innerHTML =res1.value  ;
+        function operDo(){
+        //console.log(`num1 ${num1}`);
+        //console.log(`num1 ${num1}`);
+        //console.log(`num1 ${num1}`);
+            if (oper== "+") {
+                res.value = +num1 + +res.value
+            }
+            if (oper== "*") {
+                res.value = +num1 * +res.value
             }
 
+            if (oper== "/") {
+                res.value = +num1 / +res.value
+            }
+            if (oper== "**") {
+                res.value = number(num1) ** +res.value
+            }
+            if (oper== "-") {
+                res.value = +num1 - +res.value
+            }
+            clearFlag=true
+        }
+        function rememberOperator(){
+            oper= event.target.innerText;
+            clearFlag=true;
+            num1=res.value;
+            console.log(num1);
+            console.log(lastOper);
         }
         
-        
+        function clearResult() {
+        res.value ="0";
+    }
+        function Sum(sum) {
+            sum=res.value;
+            res=sum;
+        }
 
     </script>
 </body>

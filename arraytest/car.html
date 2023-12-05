@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+</head>
+<body>
+    <h1>Car garage</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <button onclick="addcar()" class="btn btn-primary " aria-current="page">add car</a>
+        <button onclick="reset()" class="btn btn-primary">reset</a>
+        <button onclick="clear()" class="btn btn-primary">clear fields</a>
+        <button onclick="remove()" class="btn btn-primary">remove last car</a>
+      </div>
+      <br>
+    
+    <br>
+    <div class="row">
+        <div class="col-md-4" style="background-color: aquamarine;">Model year car</div><ol>
+            <input id="year" type ="string">
+        <div class="col-md-4" style="background-color: rgb(255, 127, 178);">Lisence car</div>
+        <input id="lisence" type ="string">
+        <div class="col-md-4" style="background-color: rgb(161, 255, 127);">Color car</div>
+        <input id="colorcar" type ="text">
+        <div class="col-md-4" style="background-color: rgb(161, 127, 255);">Model vechicle</div>
+        <input id="model" type ="text">  
+    </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-4" style="background-color: rgb(236, 17, 57);">REMOVE CAR BY ID</div><ol>
+               
+        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button onclick="removeid()" class="btn btn-primary " aria-current="page">submit</a>
+            </div>
+        <br>
+            <br>
+        <input id="carid" type ="string">
+        <br>
+
+        
+       <script>
+            let carbook = []
+            let carbookid = 0
+            const restartButton = document.getElementById("restart-button");
+            function addcar(){
+                carbook.push({"modelyear":year.value,"licensecar":license.value,"colorcar" : color.car.value,"model" : model.value ,
+                "carbookid" : carbookid.value
+            })
+            carbookid ++
+            console.log(carrbook);
+            watchCarbook();
+            }
+
+            function reset(){
+                carbook =[]
+                carbookid = 0
+                clearInput()
+                watchCarbook();
+
+            }
+
+            function clear(){
+                carbook.pop()                 
+                carbookid --
+                watchCarbook();
+
+            }
+
+            function removeid(){
+                let index = +carid.value
+                carbook.splice(index,1)
+                watchCarbook();
+
+            }
+
+            //clearInput(){
+                //document.getElementById('year').value = "";
+               // document.getElementById('license').value = "";
+               // document.getElementById('colorcar').value = "";
+               // document.getElementById('model').value = "";
+            //}
+        
+            //watchCarbook(){
+                //const watchCar= document.getElementById("watchCar");
+               // watchCar.innerHTML = "";
+                //for (let i=0; i<watchcar.lenght i++){
+                   // const car =watchcar[i];
+                   // const listItem = document.createElement("car");
+                   // listItem.textContent = `carbookid: ${car.carbookid}, color: ${car.color},
+                   // watchCar.appendChild(listItem);
+                    
+                //}
+           // }
+
+       </script>
+</body>
+</html>

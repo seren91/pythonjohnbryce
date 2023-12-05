@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="move()" id="btn1" style="top: 200px;left: 50px; position: absolute;">DVD</button>
+
+    <script>
+        let newTop =0
+        let delta =20
+        let newLeft =0
+        let deltaLeft =20
+        const move=()=>{
+            // top
+            newTop+= delta
+            btn1.style.top =`${newTop}px`
+            if (newTop > window.screen.height || newTop <0 ){
+                delta = -delta
+            }
+
+            // Left
+            newLeft+= deltaLeft
+            btn1.style.left =`${newLeft}px`
+            if (newLeft > window.screen.width || newLeft <0 ){
+                deltaLeft = -deltaLeft
+            }
+        }
+        setInterval(move,100)
+    </script>
+</body>
+</html>

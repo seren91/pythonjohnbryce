@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body >
+
+    <h2>JavaScript Clock</h2>
+
+    <div  id="clock"></div>
+
+    <script>
+        const  startTime=()=> {
+            const today = new Date();
+            const h = today.getHours();
+            const m = today.getMinutes();
+            const s = today.getSeconds();
+            console.log(`rgb(${s*10 % 255}, ${s*20 % 255}, ${s*50 % 255})`);
+            clock.style.color =`rgb(${s*10 % 255}, ${s*20 % 255}, ${s*50 % 255})`
+            clock.innerHTML = h + ":" + ( m <10 ?"0" +m:m) + ":" + (s <10 ? "0"+s:s);
+        }
+        setInterval(startTime,1000)
+
+    </script>
+
+</body>
+
+</html>

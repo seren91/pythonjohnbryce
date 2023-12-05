@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Brand:<input id="Brand" value="Volvo">
+    Model:<input id="Model" value="2022">
+    Color:<input id="Color" value="Blue">
+    <button onclick="addCar()">Add</button>
+    <h1>My Cars</h1>
+    <div id="display" style="background-color: gray;padding: 100px;"></div>
+    <script>
+        let cars = []
+        function addCar() {
+            cars.push({ "Brand": Brand.value, "Model": Model.value, "Color": Color.value })
+            updateDisplay()
+        }
+
+        function delCar(index){
+            debugger
+            cars.splice(index,1)
+            updateDisplay()
+        }
+
+        function updCar(index){
+            console.log(cars[index]);
+            cars[index].Model=Model.value
+            cars[index].Color=Color.value
+            cars[index].Brand=Brand.value
+            updateDisplay()
+        }
+        function updateDisplay()
+        {
+            localStorage.setItem('cars',JSON.stringify( cars))
+            display.innerHTML = cars.map((car,ind) => `
+            <div>
+            Model:${car.Model},
+            Brand ${car.Brand},
+            Color: ${car.Color}
+            <button onclick="delCar(${ind})">Del</button>
+            <button onclick="updCar(${ind})">Upd</button>
+            </div>`).join("")
+        }
+        function loadData(){
+            if( JSON.parse( localStorage.getItem('cars')) != null)
+                {
+                    cars =JSON.parse( localStorage.getItem('cars'))
+                }
+            updateDisplay()
+        }
+        loadData()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    StuName:<input id="sName">
+    age:<input id="age">
+    <button onclick="showAll()">show all</button>
+    <button onclick="add()">add</button>
+    <button onclick="show()">show array</button>
+    <div id="display"></div>
+    <script>
+        const MY_SERVER = "http://localhost:3000/students"
+        let students = []
+        
+        // fetch data from serevr
+        function showAll() {
+            fetch(MY_SERVER)
+                .then((response) => response.json())
+                .then((json) => students = json);
+        }
+
+        function add() {
+            fetch(MY_SERVER, {
+                method: 'POST',
+                body: JSON.stringify({
+                    sName: sName.value,
+                    age: age.value
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+        }
+        function killAstudent(id) {
+            fetch(MY_SERVER + "/" + id , {
+                method: 'DELETE',
+            });
+        }
+
+        function updStudent(id) {
+            fetch(MY_SERVER + "/" + id , {
+                method: 'PUT',
+                body: JSON.stringify({
+                    sName: sName.value,
+                    age: age.value
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((json) => console.log(json));
+        }
+        function show() {
+            showAll()
+            display.innerHTML = students.map(Student => `
+            <div>
+            Name:${Student.sName},
+            Age ${Student.age},
+            <img src="https://picsum.photos/20">
+            <button onclick="killAstudent(${Student.id})">Del</button>
+            <button onclick="updStudent(${Student.id})">Upd</button>
+            </div>`).join("")
+        }
+    </script>
+</body>
+
+</html>

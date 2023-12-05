@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    color:<input id="color" value="blue">
+    model <input id="model" value="2333">
+    <button onclick="add()" class='btn btn-danger'>Add</button>
+    <h1>My Cars</h1>
+    <div id="total"></div>
+    <div id="display"></div>
+    <div id="msg" style="color: red;"></div>
+    <script>
+        const MY_SERVER = "http://localhost:3000/cars"
+        let cars = []
+        const read=async ()=> {
+            cars = await axios.get(MY_SERVER)
+            cars = cars.data
+            console.table(cars);
+            buildDisplay()
+        }
+
+        const add = () => {
+            if (model.value > 2000) { //check if age > 18, name length >=3
+                axios.post(MY_SERVER, {
+                    color: color.value,
+                    model: model.value
+                })
+                read()
+            } else {
+                msg.innerHTML = ("the model shuld b > 2000");
+            }
+            // buildDisplay()
+        }
+
+        const update = (id) => {
+            if (model.value > 2000) { //check if age > 18, name length >=3
+                axios.put(`${MY_SERVER}/${id}`, {
+                    color: color.value,
+                    model: model.value
+                })
+            } else {
+                msg.innerHTML = ("the model shuld b > 2000");
+            }
+
+        }
+
+        const del = (id) => axios.delete(`${MY_SERVER}/${id}`)
+
+
+        const buildDisplay=()=> {
+            display.innerHTML = cars.map(car => `
+            <div>
+                color:${car.color},
+                model:${car.model}
+                <button onclick=del(${car.id})>del</button>
+                <button class='btn btn-success' onclick=update(${car.id})>upd</button>
+            </div>`).join("")
+            total.innerHTML = "<h2>Total: " + cars.length + " cars"
+        }
+        read()
+    </script>
+</body>
+
+</html>

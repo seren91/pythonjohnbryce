@@ -1,3 +1,8 @@
-my_list = [1,2, 3]
+def sum_nums(a, b):
+    sum = a + b
+    return sum
+    print("dcdcdcdcdc")
 
-print( my_list)
+
+first_sum = sum_nums(10, 5)
+print(first_sum)

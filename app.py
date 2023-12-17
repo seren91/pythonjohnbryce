@@ -1,7 +1,7 @@
 print('dcndc')
 
 
-arr= [1,12,74,81,8,7,14]
+arr= [1,12,74,81,8,7898,14]
 def bigger(arr):    
     #global arr
     start=arr[0]

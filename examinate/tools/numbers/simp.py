@@ -2,11 +2,11 @@ a=24
 b=10
 x=20
 y=50
-def add(x,y):
+def adding(x,y):
     sum= x+y
     return sum
-def substr(a,b):
+def substracting(a,b):
     substr=a-b
     return substr
-print(add(x,y))
-print(substr(a,b)) 
+print(adding(x,y))
+print(substracting(a,b)) 

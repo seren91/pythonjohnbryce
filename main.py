@@ -6,3 +6,4 @@ def sum_nums(a, b):
 
 first_sum = sum_nums(10, 5)
 print(first_sum)
+
